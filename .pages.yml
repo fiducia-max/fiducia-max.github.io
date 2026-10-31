@@ -1,0 +1,345 @@
+# Pages CMS admin configuration — https://app.pagescms.org
+# Sign in with GitHub, open this repository, and edit everything below from the admin UI.
+
+media:
+  input: media
+  output: /media
+  rename: safe
+  categories: [image]
+
+content:
+  # ---------------------------------------------------------------- POSTS
+  - name: posts
+    label: "📝 Articles & Case Studies"
+    type: file
+    path: content/posts.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: category
+        label: Category
+        type: select
+        options:
+          values: [Case Studies, Tax Tips, Small Business, Financial Planning, News]
+      - name: date
+        label: Publish date
+        type: date
+        description: Newest posts are shown first.
+      - name: read_time
+        label: Read time
+        type: string
+        description: "e.g. 4 min read"
+      - name: cover
+        label: Cover image
+        type: image
+        description: Recommended 1600×900 px (16:9). Leave empty to use the default gold/dark cover.
+      - name: excerpt
+        label: Short summary (shown on the card)
+        type: text
+      - name: body
+        label: Article content
+        type: rich-text
+        options:
+          format: html
+      - name: published
+        label: Published (turn off to hide without deleting)
+        type: boolean
+        default: true
+
+  # ---------------------------------------------------------------- SITE TEXT
+  - name: site
+    label: "🏠 Homepage & Contact"
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - name: seo
+        label: SEO (Google title & description)
+        type: object
+        fields:
+          - { name: title, label: Page title, type: string }
+          - { name: description, label: Meta description, type: text }
+      - name: hero
+        label: Hero (top banner)
+        type: object
+        fields:
+          - { name: eyebrow, label: Small line above headline, type: string }
+          - { name: title, label: Headline, type: string }
+          - { name: highlight, label: Headline – gold italic ending, type: string }
+          - { name: subtitle, label: Sub-headline, type: text }
+          - { name: button_primary, label: Main button text, type: string }
+          - { name: button_secondary, label: Second button text, type: string }
+          - { name: tagline, label: Tagline, type: string }
+          - { name: card_title, label: Right card title, type: string }
+          - { name: card_items, label: Right card bullet points, type: string, list: true }
+      - name: stats
+        label: Numbers strip
+        type: object
+        list: true
+        fields:
+          - { name: value, label: Number, type: string }
+          - { name: label, label: Label, type: string }
+      - name: services_intro
+        label: Services section intro
+        type: object
+        fields:
+          - { name: title, type: string }
+          - { name: text, type: text }
+      - name: founder
+        label: Founder
+        type: object
+        fields:
+          - { name: name, label: Name, type: string }
+          - { name: photo, label: Portrait photo (4:5), type: image }
+          - name: bio
+            label: Biography
+            type: rich-text
+            options: { format: html }
+          - { name: credentials, label: Credentials badges, type: string, list: true }
+      - { name: team_title, label: Team section title, type: string }
+      - name: process
+        label: How it works steps
+        type: object
+        list: true
+        fields:
+          - { name: title, type: string }
+          - { name: text, type: text }
+      - name: insights_intro
+        label: Insights section intro
+        type: object
+        fields:
+          - { name: title, type: string }
+          - { name: text, type: text }
+      - name: contact
+        label: Contact details
+        type: object
+        fields:
+          - { name: title, label: Section title, type: string }
+          - { name: text, label: Section text, type: text }
+          - { name: phone, label: Phone, type: string }
+          - { name: email, label: Email, type: string }
+          - { name: facebook_url, label: Facebook URL, type: string }
+          - { name: facebook_name, label: Facebook display name, type: string }
+          - { name: instagram_url, label: Instagram URL, type: string }
+          - { name: instagram_handle, label: Instagram handle, type: string }
+          - name: form_email
+            label: Contact form sends to (email)
+            type: string
+            description: The first submission sends an activation email to this address – click the link once to start receiving messages.
+      - { name: footer_disclaimer, label: Footer disclaimer, type: text }
+
+  # ---------------------------------------------------------------- SERVICES
+  - name: services
+    label: "💼 Services"
+    type: file
+    path: content/services.json
+    format: json
+    list: true
+    fields:
+      - { name: title, label: Service name, type: string, required: true }
+      - { name: description, label: Short description, type: text }
+      - name: icon
+        label: Icon
+        type: select
+        options:
+          values: [document, book, shield, dollar, users, briefcase, id-card, chart, heart, calculator, home, globe, star]
+
+  # ---------------------------------------------------------------- TEAM
+  - name: team
+    label: "👥 Team"
+    type: file
+    path: content/team.json
+    format: json
+    list: true
+    fields:
+      - { name: name, label: Name, type: string, required: true }
+      - { name: role, label: Role, type: string }
+      - { name: photo, label: Photo (square), type: image }
+      - { name: bio, label: Short bio, type: text }
+
+  # ---------------------------------------------------------------- TESTIMONIALS
+  - name: testimonials
+    label: "⭐ Testimonials"
+    type: file
+    path: content/testimonials.json
+    format: json
+    list: true
+    fields:
+      - { name: quote, label: Client quote, type: text, required: true }
+      - { name: name, label: Client name, type: string }
+      - { name: detail, label: "Detail (e.g. Small business owner, MD)", type: string }
+      - { name: rating, label: Stars (1–5), type: number }
+      - { name: photo, label: Photo (optional), type: image }
+
+  # ---------------------------------------------------------------- FAQ
+  - name: faq
+    label: "❓ FAQ"
+    type: file
+    path: content/faq.json
+    format: json
+    list: true
+    fields:
+      - { name: question, type: string, required: true }
+      - { name: answer, type: text }
+
+  # ---------------------------------------------------------------- RESOURCES
+  - name: resources
+    label: "🔗 Resources links"
+    type: file
+    path: content/resources.json
+    format: json
+    list: true
+    fields:
+      - { name: group, label: "Group (e.g. IRS, Maryland)", type: string }
+      - name: links
+        type: object
+        list: true
+        fields:
+          - { name: label, type: string }
+          - { name: url, label: URL, type: string }
+
+  # ---------------------------------------------------------------- TRACKING
+  - name: tracking
+    label: "📊 Tracking & Pixels"
+    type: file
+    path: content/tracking.json
+    format: json
+    fields:
+      - name: meta_pixel_id
+        label: Facebook / Meta Pixel ID
+        type: string
+        description: "Numbers only, e.g. 123456789012345. Tracks PageView, Lead (form), Contact (call/email), ViewContent (article), Schedule."
+      - name: ga4_measurement_id
+        label: Google Analytics 4 – Measurement ID
+        type: string
+        description: "e.g. G-XXXXXXXXXX"
+      - name: gtm_container_id
+        label: Google Tag Manager – Container ID
+        type: string
+        description: "e.g. GTM-XXXXXXX. Tip: if you use GTM to load GA4/Ads, leave those fields empty to avoid double counting."
+      - name: google_ads_id
+        label: Google Ads – Conversion ID
+        type: string
+        description: "e.g. AW-123456789"
+      - name: google_ads_lead_label
+        label: Google Ads – Lead conversion label
+        type: string
+        description: "The part after the slash in AW-123456789/AbCdEfGh – fires when the contact form is submitted."
+      - { name: tiktok_pixel_id, label: TikTok Pixel ID, type: string }
+      - { name: clarity_project_id, label: Microsoft Clarity Project ID (heatmaps & recordings), type: string }
+      - { name: linkedin_partner_id, label: LinkedIn Insight Tag – Partner ID, type: string }
+      - name: custom_head_code
+        label: Custom code – <head>
+        type: code
+        options: { language: html }
+        description: Paste any other tracking/verification snippet here (scripts are executed).
+      - name: custom_body_code
+        label: Custom code – end of <body>
+        type: code
+        options: { language: html }
+
+  # ---------------------------------------------------------------- PLUGINS
+  - name: features
+    label: "🧩 Design & Plugins"
+    type: file
+    path: content/features.json
+    format: json
+    fields:
+      - name: theme
+        label: Theme
+        type: object
+        fields:
+          - name: accent_color
+            label: Accent color (hex)
+            type: string
+            pattern: { regex: "^#[0-9a-fA-F]{6}$", message: "Use a hex color like #c6a15b" }
+          - name: dark_color
+            label: Dark color (hex)
+            type: string
+            pattern: { regex: "^#[0-9a-fA-F]{6}$", message: "Use a hex color like #1f2329" }
+          - name: heading_font
+            label: Heading font
+            type: select
+            options:
+              values: [Cormorant Garamond, Playfair Display, Lora, Libre Baskerville, DM Serif Display, Montserrat, Poppins]
+      - name: sections
+        label: Show / hide sections
+        type: object
+        fields:
+          - { name: show_stats, label: Numbers strip, type: boolean }
+          - { name: show_process, label: How it works, type: boolean }
+          - { name: show_insights, label: Articles & case studies, type: boolean }
+          - { name: show_testimonials, label: Testimonials, type: boolean }
+          - { name: show_faq, label: FAQ, type: boolean }
+          - { name: show_resources, label: Resources links, type: boolean }
+      - name: announcement
+        label: Announcement bar (top of page)
+        type: object
+        fields:
+          - { name: enabled, type: boolean }
+          - { name: text, type: string }
+          - { name: link_text, type: string }
+          - { name: link_url, label: Link URL, type: string }
+      - name: floating_contact
+        label: Floating contact buttons
+        type: object
+        fields:
+          - { name: enabled, type: boolean }
+          - { name: show_call, label: Call button, type: boolean }
+          - { name: show_email, label: Email button, type: boolean }
+          - { name: messenger_url, label: "Messenger link (e.g. https://m.me/yourpage)", type: string }
+          - { name: zalo_phone, label: Zalo phone number, type: string }
+          - { name: whatsapp_phone, label: "WhatsApp number (with country code, e.g. 13013562555)", type: string }
+      - name: booking
+        label: Online booking (appointments)
+        type: object
+        fields:
+          - name: mode
+            label: Booking system
+            type: select
+            options:
+              values:
+                - { name: built-in, label: "Built-in booking form (emails you every booking)" }
+                - { name: calendly, label: "Calendly (syncs with your calendar, prevents double booking)" }
+                - { name: "off", label: "Off – buttons scroll to the contact form" }
+          - { name: use_for_buttons, label: "Open booking when visitors click 'Free Consultation'", type: boolean }
+          - name: notify_email
+            label: Send booking notifications to (email)
+            type: string
+            description: The first booking sends an activation email to this address – click the link once to start receiving bookings.
+          - { name: title, label: Booking window title, type: string }
+          - { name: subtitle, label: Booking window subtitle, type: text }
+          - { name: timezone_label, label: "Time zone shown to visitors (e.g. Eastern Time (ET))", type: string }
+          - name: available_days
+            label: Working days
+            type: select
+            options:
+              multiple: true
+              values: [Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+          - { name: time_slots, label: "Time slots (e.g. 9:00 AM)", type: string, list: true }
+          - { name: days_ahead, label: How many days ahead visitors can book, type: number }
+          - { name: min_notice_days, label: "Minimum notice (days) – 0 allows same-day", type: number }
+          - { name: blocked_dates, label: "Days off / holidays (no bookings)", type: date, list: true }
+          - { name: meeting_types, label: Meeting types offered, type: string, list: true }
+          - name: confirmation_message
+            label: Auto-reply email sent to the client
+            type: text
+          - { name: calendly_url, label: "Calendly link (only if Booking system = Calendly)", type: string }
+      - name: cookie_banner
+        label: Cookie consent banner
+        type: object
+        fields:
+          - { name: enabled, type: boolean }
+          - { name: text, type: text }
+          - { name: wait_for_consent, label: Load tracking only after visitor accepts, type: boolean }
+      - name: extras
+        label: Extras
+        type: object
+        fields:
+          - { name: scroll_progress_bar, label: Scroll progress bar, type: boolean }
+          - { name: back_to_top, label: Back-to-top button, type: boolean }
+          - { name: animations, label: Fade-in animations, type: boolean }
