@@ -24,6 +24,15 @@
   .pb-button{text-align:center}
   .pb-button a{text-decoration:none!important;color:var(--ink)!important}
   .pb-divider{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
+  .pb-heading{margin:2.4rem 0 .8rem}
+  .pb-mt{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+  .pb-mt.right .pb-mt-img{order:2}
+  .pb-mt-img img{width:100%;height:auto}
+  .pb-mt-txt p:last-child{margin-bottom:0}
+  .pb-embed iframe{width:100%;min-height:380px;border:0}
+  .pb-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem}
+  .pb-spacer{height:2.5rem}
+  @media(max-width:720px){.pb-mt{grid-template-columns:1fr}.pb-mt.right .pb-mt-img{order:0}}
   #lightbox{position:fixed;inset:0;background:rgba(10,12,15,.92);z-index:200;display:none;align-items:center;justify-content:center;padding:4vh 4vw;cursor:zoom-out}
   #lightbox.open{display:flex}
   #lightbox img{max-width:100%;max-height:100%;object-fit:contain}
@@ -91,8 +100,51 @@
       case 'callout': return `<div class="pb pb-callout">${b.title ? `<b>${e(b.title)}</b>` : ''}<p>${e(b.text)}</p></div>`;
       case 'button': return b.label ? `<div class="pb pb-button"><a class="btn btn-gold" href="${e(b.url || '#contact')}" ${/^https?:/.test(b.url || '') ? 'target="_blank" rel="noopener"' : 'onclick="closePost()"'}>${e(b.label)} &rarr;</a></div>` : '';
       case 'divider': return '<hr class="pb-divider">';
+      case 'heading': { const l = b.level === 'h3' ? 'h3' : 'h2'; return b.text ? `<${l} class="pb-heading">${e(b.text)}</${l}>` : ''; }
+      case 'media_text': return b.image ? `<div class="pb pb-mt ${b.position === 'right' ? 'right' : ''}"><div class="pb-mt-img"><img src="${e(m(b.image))}" alt="${e(b.caption || '')}" loading="lazy">${cap(b.caption)}</div><div class="pb-mt-txt">${typeof rich === 'function' ? rich(b.body) : (b.body || '')}</div></div>` : '';
+      case 'embed': return b.code ? `<div class="pb pb-embed">${/^https?:\/\/\S+$/.test(String(b.code).trim()) ? (embed(b.code) || `<iframe src="${e(String(b.code).trim())}" loading="lazy"></iframe>`) : b.code}</div>` : '';
+      case 'spacer': return '<div class="pb-spacer"></div>';
     }
     return '';
+  }
+
+  // WordPress-style shortcodes typed on their own line in the text editor:
+  // [image 1] [image 2 small] [gallery] [gallery 1,3,4] [gallery 2-5] [video LINK]
+  // [button Book a call | #contact] [quote Text | Author] [callout Title | Text] [divider]
+  function nums(arg, max) {
+    if (!arg) return Array.from({ length: max }, (_, i) => i + 1);
+    const out = [];
+    arg.split(/[,\s]+/).filter(Boolean).forEach(t => { const r = t.split('-').map(Number); if (r.length === 2) { for (let k = r[0]; k <= r[1]; k++) out.push(k); } else if (r[0]) out.push(r[0]); });
+    return out;
+  }
+  function shortcode(name, arg, p) {
+    const media = (p.media || []).filter(x => x && x.image);
+    const parts = (arg || '').split('|').map(x => x.trim());
+    switch (name) {
+      case 'image': case 'img': case 'anh': {
+        const [n, size] = (arg || '1').split(/\s+/); const it = media[(+n || 1) - 1];
+        return it ? block({ type: 'image', image: it.image, caption: it.caption, size: ({ small: 'normal', nho: 'normal', wide: 'wide', rong: 'wide' })[size] || 'full' }) : '';
+      }
+      case 'gallery': case 'album': {
+        const it = nums(arg, media.length).map(k => media[k - 1]).filter(Boolean);
+        return block({ type: 'gallery', images: it });
+      }
+      case 'video': case 'embed': return block({ type: 'video', url: arg });
+      case 'button': case 'nut': return block({ type: 'button', label: parts[0], url: parts[1] });
+      case 'quote': return block({ type: 'quote', text: parts[0], author: parts[1] });
+      case 'callout': case 'note': return block({ type: 'callout', title: parts[1] ? parts[0] : '', text: parts[1] || parts[0] });
+      case 'divider': case 'hr': return block({ type: 'divider' });
+    }
+    return null;
+  }
+  function applyShortcodes(root, p) {
+    root.querySelectorAll('p, h2, h3, li').forEach(el => {
+      const txt = el.textContent.trim();
+      const mm = txt.match(/^\[(\w+)\s*([^\]]*)\]$/); if (!mm) return;
+      const html = shortcode(mm[1].toLowerCase(), mm[2].trim(), p); if (html === null) return;
+      const d = document.createElement('div'); d.innerHTML = html;
+      (el.tagName === 'LI' ? el : el).replaceWith(...d.childNodes);
+    });
   }
 
   // Video links pasted on their own line inside the text editor become players too
@@ -128,6 +180,7 @@
     if (p.video_url && !p.cover) document.getElementById('mCover').innerHTML = `<div class="pb-video" style="margin:0">${embed(p.video_url)}</div>`;
     else if (p.video_url) box.insertAdjacentHTML('afterbegin', `<div class="pb pb-video" style="margin-top:0">${embed(p.video_url)}</div>`);
     if (Array.isArray(p.blocks) && p.blocks.length) box.insertAdjacentHTML('beforeend', p.blocks.map(block).join(''));
+    applyShortcodes(box, p);
     autoEmbed(box);
     box.querySelectorAll('.pb-gallery a[data-full], .pb-image img').forEach(a => {
       if (a.closest('a[href]')) return;
