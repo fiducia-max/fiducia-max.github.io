@@ -1,0 +1,87 @@
+{
+  "seo": {
+    "title": "Fiducia Tax & Financial Solutions | Julie Tram Nguyen, CPA",
+    "description": "Tax compliance, bookkeeping, IRS audit support, tax debt resolution, payroll, business setup and financial planning by Julie Tram Nguyen, CPA."
+  },
+  "hero": {
+    "eyebrow": "Julie Tram Nguyen, CPA",
+    "title": "Tax & financial solutions, built around",
+    "highlight": "your goals.",
+    "subtitle": "Your goals come first. We help individuals, families and businesses navigate taxes, compliance and their financial future — every step of the way.",
+    "button_primary": "Schedule a Complimentary Consultation",
+    "button_secondary": "Explore Services",
+    "tagline": "Reliable Expertise · Trusted Results",
+    "card_title": "How we can help",
+    "card_items": [
+      "Individual, business, estate & trust tax returns",
+      "IRS audits, notices & back-tax resolution",
+      "Bookkeeping & payroll management",
+      "Business setup, EIN & ITIN applications",
+      "Financial planning & insurance consulting"
+    ]
+  },
+  "stats": [
+    {
+      "value": "10+",
+      "label": "Years of experience"
+    },
+    {
+      "value": "CPA",
+      "label": "Licensed professional"
+    },
+    {
+      "value": "2020",
+      "label": "Firm founded"
+    },
+    {
+      "value": "9",
+      "label": "Core services"
+    }
+  ],
+  "services_intro": {
+    "title": "Everything you need, under one trusted roof",
+    "text": "From annual filings to complex tax issues, we provide clear guidance and dependable execution for individuals and businesses."
+  },
+  "founder": {
+    "name": "Julie Tram Nguyen, CPA",
+    "photo": "",
+    "bio": "<p>Julie brings over 10 years of experience across accounting, tax, finance and business. She spent six years at public accounting firms, including RSM, before founding Fiducia Tax &amp; Financial Solutions in 2020.</p><p>Her approach is simple: put clients' goals first, explain things clearly, and deliver results you can rely on.</p>",
+    "credentials": [
+      "Certified Public Accountant",
+      "Life & Health Insurance License",
+      "B.S. Economics & Accounting — University of Maryland, College Park",
+      "Former RSM"
+    ]
+  },
+  "team_title": "Experienced people behind every engagement",
+  "process": [
+    {
+      "title": "Free consultation",
+      "text": "Tell us about your situation and goals. We'll listen and outline your options."
+    },
+    {
+      "title": "A tailored plan",
+      "text": "We recommend the right services and explain timelines and next steps clearly."
+    },
+    {
+      "title": "Ongoing support",
+      "text": "We handle the work and stay with you — through filing season and beyond."
+    }
+  ],
+  "insights_intro": {
+    "title": "Articles & case studies",
+    "text": "Practical tax tips, business guidance and real examples of how we help clients."
+  },
+  "contact": {
+    "title": "Let's talk about your goals",
+    "text": "Schedule a complimentary consultation. Reach out directly or send us a message and we'll get back to you.",
+    "phone": "(301) 356-2555",
+    "email": "JulieNguyenCPA@protonmail.com",
+    "facebook_url": "https://www.facebook.com/profile.php?id=100008361427044",
+    "facebook_name": "Julie Tram Nguyen",
+    "instagram_url": "https://www.instagram.com/jtramtramnguyen/",
+    "instagram_handle": "@jtramtramnguyen",
+    "form_email": "JulieNguyenCPA@protonmail.com"
+  },
+  "footer_disclaimer": "Information on this website is for general informational purposes only and does not constitute tax, legal or financial advice. Please contact us to discuss your specific situation."
+}

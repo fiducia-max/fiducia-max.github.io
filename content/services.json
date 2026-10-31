@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Tax Compliance",
+    "description": "Accurate tax preparation and filing for businesses, individuals, estates and trusts.",
+    "icon": "document"
+  },
+  {
+    "title": "Bookkeeping",
+    "description": "Organized, up-to-date books so you always know where your business stands.",
+    "icon": "book"
+  },
+  {
+    "title": "IRS Audits & Notices",
+    "description": "Representation and clear responses when the IRS or state agencies reach out.",
+    "icon": "shield"
+  },
+  {
+    "title": "Back Taxes & Tax Debt",
+    "description": "Practical paths to resolve unfiled returns and outstanding tax balances.",
+    "icon": "dollar"
+  },
+  {
+    "title": "Payroll Management",
+    "description": "Reliable payroll processing and payroll tax compliance for your team.",
+    "icon": "users"
+  },
+  {
+    "title": "Business Setup & EIN",
+    "description": "Entity formation guidance and EIN applications to start your business right.",
+    "icon": "briefcase"
+  },
+  {
+    "title": "ITIN Applications",
+    "description": "Assistance preparing and submitting Individual Taxpayer Identification Number applications.",
+    "icon": "id-card"
+  },
+  {
+    "title": "Financial Planning",
+    "description": "Thoughtful planning to help you build, protect and grow your financial future.",
+    "icon": "chart"
+  },
+  {
+    "title": "Life & Health Insurance",
+    "description": "Licensed consulting to find coverage that fits your family and your budget.",
+    "icon": "heart"
+  }
+]

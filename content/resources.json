@@ -1,0 +1,50 @@
+[
+  {
+    "group": "IRS (Federal)",
+    "links": [
+      {
+        "label": "Tax Payments",
+        "url": "https://www.irs.gov/payments"
+      },
+      {
+        "label": "Refund Status",
+        "url": "https://www.irs.gov/refunds"
+      }
+    ]
+  },
+  {
+    "group": "Maryland",
+    "links": [
+      {
+        "label": "Tax Payments",
+        "url": "https://www.velocitypayment.com/client/rad/"
+      },
+      {
+        "label": "Refund Status",
+        "url": "https://interactive.marylandtaxes.gov/INDIV/refundstatus/home.aspx"
+      },
+      {
+        "label": "Tax Calculator",
+        "url": "https://marylandtaxes.gov/online-services/tax-calculators.php"
+      }
+    ]
+  },
+  {
+    "group": "Virginia",
+    "links": [
+      {
+        "label": "Refund Status",
+        "url": "https://www.individual.tax.virginia.gov/IOP/#/refund"
+      }
+    ]
+  },
+  {
+    "group": "Pennsylvania",
+    "links": [
+      {
+        "label": "Refund Status",
+        "url": "https://mypath.pa.gov/_/"
+      }
+    ]
+  }
+]

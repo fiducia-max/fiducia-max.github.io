@@ -1,0 +1,73 @@
+{
+  "theme": {
+    "accent_color": "#c6a15b",
+    "dark_color": "#1f2329",
+    "heading_font": "Cormorant Garamond"
+  },
+  "sections": {
+    "show_stats": true,
+    "show_process": true,
+    "show_insights": true,
+    "show_testimonials": false,
+    "show_faq": true,
+    "show_resources": true
+  },
+  "announcement": {
+    "enabled": false,
+    "text": "Tax season is here — book your complimentary consultation today.",
+    "link_text": "Book now",
+    "link_url": "#contact"
+  },
+  "floating_contact": {
+    "enabled": true,
+    "show_call": true,
+    "show_email": true,
+    "messenger_url": "",
+    "zalo_phone": "",
+    "whatsapp_phone": ""
+  },
+  "booking": {
+    "mode": "built-in",
+    "use_for_buttons": true,
+    "notify_email": "JulieNguyenCPA@protonmail.com",
+    "title": "Book a complimentary consultation",
+    "subtitle": "Pick a date and time that works for you. We'll confirm by email.",
+    "timezone_label": "Eastern Time (ET)",
+    "available_days": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri"
+    ],
+    "time_slots": [
+      "9:00 AM",
+      "10:00 AM",
+      "11:00 AM",
+      "1:00 PM",
+      "2:00 PM",
+      "3:00 PM",
+      "4:00 PM"
+    ],
+    "days_ahead": 21,
+    "min_notice_days": 1,
+    "blocked_dates": [],
+    "meeting_types": [
+      "Phone call",
+      "Video call (Zoom / Google Meet)",
+      "In person"
+    ],
+    "confirmation_message": "Thank you for booking a consultation with Fiducia Tax & Financial Solutions. We have received your request and will confirm your appointment by email shortly. If you need to reschedule, simply reply to this email.",
+    "calendly_url": ""
+  },
+  "cookie_banner": {
+    "enabled": false,
+    "text": "We use cookies to understand how visitors use our site and improve your experience.",
+    "wait_for_consent": true
+  },
+  "extras": {
+    "scroll_progress_bar": true,
+    "back_to_top": true,
+    "animations": true
+  }
+}
