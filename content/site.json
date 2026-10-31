@@ -18,7 +18,8 @@
       "Bookkeeping & payroll management",
       "Business setup, EIN & ITIN applications",
       "Financial planning & insurance consulting"
-    ]
+    ],
+    "background_image": "https://images.unsplash.com/photo-1772588627342-5ec373e236d8?w=2000&q=75&auto=format&fit=crop"
   },
   "stats": [
     {
@@ -44,7 +45,7 @@
   },
   "founder": {
     "name": "Julie Tram Nguyen, CPA",
-    "photo": "",
+    "photo": "/media/julie-tram-nguyen.webp",
     "bio": "<p>Julie brings over 10 years of experience across accounting, tax, finance and business. She spent six years at public accounting firms, including RSM, before founding Fiducia Tax &amp; Financial Solutions in 2020.</p><p>Her approach is simple: put clients' goals first, explain things clearly, and deliver results you can rely on.</p>",
     "credentials": [
       "Certified Public Accountant",
@@ -83,5 +84,7 @@
     "instagram_handle": "@jtramtramnguyen",
     "form_email": "JulieNguyenCPA@protonmail.com"
   },
-  "footer_disclaimer": "Information on this website is for general informational purposes only and does not constitute tax, legal or financial advice. Please contact us to discuss your specific situation."
+  "footer_disclaimer": "Information on this website is for general informational purposes only and does not constitute tax, legal or financial advice. Please contact us to discuss your specific situation.",
+  "process_image": "https://images.unsplash.com/photo-1714974528737-3e6c7e4d11af?w=2100&h=800&q=75&auto=format&fit=crop",
+  "process_image_alt": "Advisors meeting with clients at a conference table"
 }
