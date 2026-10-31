@@ -5,7 +5,7 @@ media:
   input: media
   output: /media
   rename: safe
-  categories: [image]
+  categories: [image, video]
 
 content:
   # ---------------------------------------------------------------- POSTS
@@ -40,11 +40,92 @@ content:
       - name: excerpt
         label: Short summary (shown on the card)
         type: text
+      - name: video_url
+        label: Featured video link (optional)
+        type: string
+        description: "Paste a YouTube, Vimeo, Facebook, TikTok or Google Drive video link. It plays at the top of the article (and its thumbnail is used on the card if there is no cover image)."
       - name: body
-        label: Article content
+        label: Article text
         type: rich-text
+        description: "Write the main text here. Tip: paste a YouTube/Vimeo/Facebook link on its own line and it turns into a video player."
         options:
           format: html
+      - name: blocks
+        label: Content blocks – images, videos, galleries… (shown after the text)
+        description: "Click 'Add' and choose a block type. Drag blocks to reorder them."
+        type: block
+        list: true
+        blockKey: type
+        blocks:
+          - name: text
+            label: Text
+            fields:
+              - name: body
+                label: Text
+                type: rich-text
+                options: { format: html }
+          - name: image
+            label: Image
+            fields:
+              - { name: image, label: Image, type: image }
+              - { name: caption, label: Caption (optional), type: string }
+              - name: size
+                label: Size
+                type: select
+                options:
+                  values:
+                    - { name: full, label: Full width of the article }
+                    - { name: wide, label: Extra wide }
+                    - { name: normal, label: Small / centered }
+              - { name: alt, label: "Image description for Google & screen readers (optional)", type: string }
+              - { name: link, label: Link when clicked (optional), type: string }
+          - name: gallery
+            label: Photo gallery
+            fields:
+              - name: images
+                label: Photos
+                type: object
+                list: true
+                fields:
+                  - { name: image, label: Photo, type: image }
+                  - { name: caption, label: Caption (optional), type: string }
+              - { name: caption, label: Gallery caption (optional), type: string }
+          - name: video
+            label: Video
+            fields:
+              - name: url
+                label: Video link
+                type: string
+                description: YouTube, Vimeo, Facebook, TikTok or Google Drive link.
+              - name: video_file
+                label: …or upload a video file (MP4, under 50 MB)
+                type: file
+                description: For longer videos, upload to YouTube and paste the link instead.
+                options:
+                  categories: [video]
+              - { name: caption, label: Caption (optional), type: string }
+          - name: quote
+            label: Quote
+            fields:
+              - { name: text, label: Quote, type: text }
+              - { name: author, label: Author (optional), type: string }
+          - name: callout
+            label: Highlight box
+            fields:
+              - { name: title, label: Title (optional), type: string }
+              - { name: text, label: Text, type: text }
+          - name: button
+            label: Button
+            fields:
+              - { name: label, label: Button text, type: string }
+              - name: url
+                label: Link
+                type: string
+                description: "Use #contact for the contact form, or a full https:// link."
+          - name: divider
+            label: Divider line
+            fields:
+              - { name: note, label: (no settings needed), type: string, hidden: true }
       - name: published
         label: Published (turn off to hide without deleting)
         type: boolean
@@ -74,6 +155,7 @@ content:
           - { name: button_primary, label: Main button text, type: string }
           - { name: button_secondary, label: Second button text, type: string }
           - { name: tagline, label: Tagline, type: string }
+          - { name: background_image, label: Background photo (shown faintly behind the headline), type: image }
           - { name: card_title, label: Right card title, type: string }
           - { name: card_items, label: Right card bullet points, type: string, list: true }
       - name: stats
@@ -101,6 +183,8 @@ content:
             options: { format: html }
           - { name: credentials, label: Credentials badges, type: string, list: true }
       - { name: team_title, label: Team section title, type: string }
+      - { name: process_image, label: "How it works – section photo (wide, e.g. 2100×800)", type: image }
+      - { name: process_image_alt, label: Section photo description (for Google), type: string }
       - name: process
         label: How it works steps
         type: object
