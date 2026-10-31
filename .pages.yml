@@ -45,25 +45,50 @@ content:
         type: string
         description: "Paste a YouTube, Vimeo, Facebook, TikTok or Google Drive video link. It plays at the top of the article (and its thumbnail is used on the card if there is no cover image)."
       - name: body
-        label: Article text
+        label: "✍️ CLASSIC EDITOR – article text (like WordPress Classic)"
         type: rich-text
-        description: "Write the main text here. Tip: paste a YouTube/Vimeo/Facebook link on its own line and it turns into a video player."
+        description: >-
+          Write your article here. To place media anywhere, type a shortcode on its own line:
+          [image 1]  ·  [image 2 small]  ·  [image 3 wide]  ·  [gallery]  ·  [gallery 1,3,4]  ·  [gallery 2-5]  ·
+          [video https://youtu.be/…]  ·  [button Book a consultation | #contact]  ·  [quote Text | Author]  ·
+          [callout Title | Text]  ·  [divider].  The numbers refer to the "Media library" list below (1 = first item).
+          A YouTube/Vimeo/Facebook link pasted alone on a line also becomes a video.
         options:
           format: html
+      - name: media
+        label: "🖼️ Media library for this article (used by [image N] and [gallery])"
+        description: Upload photos here (drag & drop, several at once). Item 1 = [image 1], item 2 = [image 2]… Drag to reorder.
+        type: object
+        list: true
+        fields:
+          - { name: image, label: Photo, type: image }
+          - { name: caption, label: Caption (optional), type: string }
       - name: blocks
-        label: Content blocks – images, videos, galleries… (shown after the text)
-        description: "Click 'Add' and choose a block type. Drag blocks to reorder them."
+        label: "🧱 BLOCK EDITOR – build the article with blocks (like WordPress Gutenberg)"
+        description: "Click 'Add' to insert a block (Paragraph, Heading, Image, Gallery, Video, Image + Text…). Drag blocks to reorder. Shown after the Classic editor text – you can use either one, or both."
         type: block
         list: true
         blockKey: type
         blocks:
           - name: text
-            label: Text
+            label: Paragraph / rich text
             fields:
               - name: body
                 label: Text
                 type: rich-text
+                description: Shortcodes like [image 1] and [gallery] also work here.
                 options: { format: html }
+          - name: heading
+            label: Heading
+            fields:
+              - { name: text, label: Heading text, type: string }
+              - name: level
+                label: Size
+                type: select
+                options:
+                  values:
+                    - { name: h2, label: Large (H2) }
+                    - { name: h3, label: Medium (H3) }
           - name: image
             label: Image
             fields:
@@ -80,7 +105,7 @@ content:
               - { name: alt, label: "Image description for Google & screen readers (optional)", type: string }
               - { name: link, label: Link when clicked (optional), type: string }
           - name: gallery
-            label: Photo gallery
+            label: Gallery
             fields:
               - name: images
                 label: Photos
@@ -104,6 +129,22 @@ content:
                 options:
                   categories: [video]
               - { name: caption, label: Caption (optional), type: string }
+          - name: media_text
+            label: Image + text side by side
+            fields:
+              - { name: image, label: Image, type: image }
+              - { name: caption, label: Image caption (optional), type: string }
+              - name: position
+                label: Image position
+                type: select
+                options:
+                  values:
+                    - { name: left, label: Image on the left }
+                    - { name: right, label: Image on the right }
+              - name: body
+                label: Text
+                type: rich-text
+                options: { format: html }
           - name: quote
             label: Quote
             fields:
@@ -122,8 +163,19 @@ content:
                 label: Link
                 type: string
                 description: "Use #contact for the contact form, or a full https:// link."
+          - name: embed
+            label: Embed (Google Maps, form, any link or HTML code)
+            fields:
+              - name: code
+                label: Link or embed code
+                type: code
+                options: { language: html }
           - name: divider
             label: Divider line
+            fields:
+              - { name: note, label: (no settings needed), type: string, hidden: true }
+          - name: spacer
+            label: Spacer (empty space)
             fields:
               - { name: note, label: (no settings needed), type: string, hidden: true }
       - name: published
