@@ -1,5 +1,74 @@
 [
   {
+    "title": "[GUIDE – hidden] How to add images, galleries and videos anywhere",
+    "category": "News",
+    "date": "2026-11-01",
+    "read_time": "2 min read",
+    "cover": "https://images.unsplash.com/photo-1772588627342-5ec373e236d8?w=1600&q=75&auto=format&fit=crop",
+    "published": false,
+    "excerpt": "Example article showing every way to place media. Duplicate it as a starting point, or delete it.",
+    "video_url": "",
+    "body": "<p>This article is hidden from the website (Published = off). It shows the <strong>Classic editor</strong> way: type a shortcode on its own line wherever you want media to appear.</p><p>[image 1]</p><p>Text continues after the photo. Below is a gallery made from the Media library items 1 and 2:</p><p>[gallery 1-2]</p><p>And a video, placed exactly here:</p><p>[video https://www.youtube.com/watch?v=dQw4w9WgXcQ]</p><p>[callout Tip | Change the numbers to choose which photos appear. A gallery shortcode with no numbers shows every photo in the Media library.]</p><p>[button Book a free consultation | #contact]</p>",
+    "media": [
+      {
+        "image": "https://images.unsplash.com/photo-1772588627342-5ec373e236d8?w=1600&q=75&auto=format&fit=crop",
+        "caption": "Example photo 1 – tax forms"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1714974528737-3e6c7e4d11af?w=1600&q=75&auto=format&fit=crop",
+        "caption": "Example photo 2 – client meeting"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "heading",
+        "text": "Block editor example (like WordPress Gutenberg)",
+        "level": "h2"
+      },
+      {
+        "type": "text",
+        "body": "<p>Everything below is built with blocks. Click <strong>Add</strong> in the Block editor, choose a block, and drag to reorder.</p>"
+      },
+      {
+        "type": "media_text",
+        "image": "https://images.unsplash.com/photo-1714974528737-3e6c7e4d11af?w=1600&q=75&auto=format&fit=crop",
+        "position": "left",
+        "caption": "Image + text block",
+        "body": "<p>The <strong>Image + text</strong> block puts a photo beside a paragraph – great for case studies.</p>"
+      },
+      {
+        "type": "gallery",
+        "images": [
+          {
+            "image": "https://images.unsplash.com/photo-1772588627342-5ec373e236d8?w=1600&q=75&auto=format&fit=crop"
+          },
+          {
+            "image": "https://images.unsplash.com/photo-1714974528737-3e6c7e4d11af?w=1600&q=75&auto=format&fit=crop"
+          }
+        ],
+        "caption": "Gallery block"
+      },
+      {
+        "type": "video",
+        "url": "https://youtu.be/dQw4w9WgXcQ",
+        "caption": "Video block"
+      },
+      {
+        "type": "quote",
+        "text": "Your goals come first.",
+        "author": "Fiducia Tax & Financial Solutions"
+      },
+      {
+        "type": "divider"
+      },
+      {
+        "type": "button",
+        "label": "Contact us",
+        "url": "#contact"
+      }
+    ]
+  },
+  {
     "title": "[Sample] Resolving years of unfiled returns for a small business owner",
     "category": "Case Studies",
     "date": "2026-10-31",
